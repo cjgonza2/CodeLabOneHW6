@@ -28,20 +28,20 @@ public class ASCIILevelLoader : MonoBehaviour
         string fileContent = reader.ReadToEnd();    //creates a string thats read from the entire file. 
         reader.Close(); //closes streamreader.
 
-        char[] newLineChar = { '\n' };
+        char newLineChar = '\n'; //creates a character delimiter. 
 
-        string[] level = fileContent.Split(newLineChar);
+        string[] level = fileContent.Split(newLineChar); //creates a level string that splits the file by the newline Delimiter. 
 
-        for(int i = 0; i<level.Length; i++)
+        for(int i = 0; i<level.Length; i++) //for loop that checks each entyr in level array and makes a row based on that parameter. 
         {
             MakeRow(level[i], -i);
         }
     }
 
-    void MakeRow(string stringRow, float z)
+    void MakeRow(string stringRow, float z) //builds level based on string row. 
     {
-        char[] rowArray = stringRow.ToCharArray();
-        for(int x = 0; x < stringRow.Length; x++)
+        char[] rowArray = stringRow.ToCharArray(); //creates character array and assigns characters based on the string row. 
+        for(int x = 0; x < stringRow.Length; x++) //for loop that creates an object based on characters read in the row array. 
         {
             char c = rowArray[x];
             if(c == 'P')
